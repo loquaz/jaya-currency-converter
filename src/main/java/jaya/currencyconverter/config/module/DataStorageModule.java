@@ -57,7 +57,7 @@ public class DataStorageModule extends AbstractModule {
         File dbDirectory = new File(dbDir());
         if(!dbDirectory.exists()) dbDirectory.mkdir();
 
-        if(test) new File(dbPath()).delete();
+        if(test) new File(dbPath()).delete(); 
         
         Set<Class> entities = new HashSet();
         
