@@ -46,8 +46,16 @@ public class DataStorageModule extends AbstractModule {
         : System.getProperty("user.dir") + "/db/currency_converter.db";
     }
 
+    private String dbDir(){
+        
+        return System.getProperty("user.dir") + "/db";
+    }
+
     @Override
     protected void configure(){
+
+        File dbDirectory = new File(dbDir());
+        if(!dbDirectory.exists()) dbDirectory.mkdir();
 
         if(test) new File(dbPath()).delete();
         
