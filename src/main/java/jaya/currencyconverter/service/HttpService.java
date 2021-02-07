@@ -4,7 +4,7 @@ import java.util.Date;
 
 import javax.inject.Inject;
 
-import jaya.currencyconverter.dto.CurrencyRates;
+import jaya.currencyconverter.dto.CurrencyRatesDTO;
 
 public class HttpService {
 
@@ -15,7 +15,7 @@ public class HttpService {
         this.httpClient = httpClient;
     }
 
-    public CurrencyRates getRates(String base, Date start, Date end){
+    public CurrencyRatesDTO getRates(String base, Date start, Date end){
        return this.httpClient.getRates(base, start, end);
     }
     

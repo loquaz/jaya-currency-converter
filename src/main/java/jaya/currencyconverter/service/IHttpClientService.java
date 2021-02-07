@@ -2,10 +2,10 @@ package jaya.currencyconverter.service;
 
 import java.util.Date;
 
-import jaya.currencyconverter.dto.CurrencyRates;
+import jaya.currencyconverter.dto.CurrencyRatesDTO;
 
 public interface IHttpClientService {
     
-    CurrencyRates getRates(String base, Date start, Date end);
+    CurrencyRatesDTO getRates(String base, Date start, Date end);
     
 }

@@ -10,7 +10,7 @@ import javax.inject.Singleton;
 import org.slf4j.Logger;
 
 import jaya.currencyconverter.config.module.CurrencyConversionAnnotations.CurrencyConversionServiceLogger;
-import jaya.currencyconverter.dto.CurrencyRates;
+import jaya.currencyconverter.dto.CurrencyRatesDTO;
 import jaya.currencyconverter.dto.TransactionDTO;
 import jaya.currencyconverter.entity.CurrencyConversionTransaction;
 import jaya.currencyconverter.entity.User;
@@ -66,7 +66,7 @@ public class CurrencyConversionService {
                 throw new Exception("userID can't be null"); 
             }
 
-            CurrencyRates rates = this.httpClientService.getRates( currencyFrom, null, null );
+            CurrencyRatesDTO rates = this.httpClientService.getRates( currencyFrom, null, null );
             User user = this.userRepository.findUserById( userID );
             
             BigDecimal rate = rates.getRates().get( currencyTo );
