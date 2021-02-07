@@ -40,9 +40,15 @@ public class UserService {
         try {
             return this.repository.saveUser(user);
         } catch(SQLException e){
+            
             serviceLogger.error("user couldn't be saved to database");
-            serviceLogger.error(e.getCause().getMessage());
-            throw new Exception(e.getCause().getMessage());
+            
+            String msg = e.getCause() != null ? e.getCause().getMessage()
+                                              : e.getMessage();  
+            serviceLogger.error( msg );
+            serviceLogger.error( msg );
+            throw new Exception( msg );
+
         }
     }
     
