@@ -87,13 +87,19 @@ public class CurrencyConversionService {
             return new TransactionDTO( conversionTransaction );
 
 		} catch (SQLException e) {
-			serviceLogger.error(e.getCause().getMessage());
-            return null;
-		}catch(Exception e){
+			String msg = e.getCause() != null ? e.getCause().getMessage()
+                                              : e.getMessage();  
             
+            serviceLogger.error( "database error" );
+            serviceLogger.error( msg );
+            throw new Exception( msg );
+            
+		}catch(Exception e){
+
             String msg = e.getCause() != null ? e.getCause().getMessage()
                                               : e.getMessage();  
-            serviceLogger.error( msg );
+            
+            serviceLogger.error( "transaction error" );
             serviceLogger.error( msg );
             throw new Exception( msg );
             
