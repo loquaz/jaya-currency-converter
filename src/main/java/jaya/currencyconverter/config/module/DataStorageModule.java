@@ -69,7 +69,7 @@ public class DataStorageModule extends AbstractModule {
                 TableUtils.createTable(connectionSource, entity);
                 
             } catch (SQLException e) {
-                logger.error(e.getCause().getMessage());
+                logger.error(e.getMessage());
             }
         });        
         
