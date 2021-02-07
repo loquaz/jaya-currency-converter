@@ -90,8 +90,13 @@ public class CurrencyConversionService {
 			serviceLogger.error(e.getCause().getMessage());
             return null;
 		}catch(Exception e){
-            serviceLogger.error(e.getMessage());
-            return null;
+            
+            String msg = e.getCause() != null ? e.getCause().getMessage()
+                                              : e.getMessage();  
+            serviceLogger.error( msg );
+            serviceLogger.error( msg );
+            throw new Exception( msg );
+            
         }
     }
     
