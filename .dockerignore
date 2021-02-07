@@ -1,0 +1,8 @@
+src/
+db/
+.vscode/
+.github/
+.gitignore
+lombok.config
+pom.xml
+README.md
