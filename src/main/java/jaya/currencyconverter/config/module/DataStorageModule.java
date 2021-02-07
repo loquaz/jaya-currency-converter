@@ -1,10 +1,7 @@
 package jaya.currencyconverter.config.module;
 
 import java.io.File;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
 import java.sql.SQLException;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,7 +19,6 @@ import org.slf4j.LoggerFactory;
 import jaya.currencyconverter.config.module.DataStorageAnnotations.CurrencyConversionDao;
 import jaya.currencyconverter.config.module.DataStorageAnnotations.UserDao;
 import jaya.currencyconverter.entity.CurrencyConversionTransaction;
-import jaya.currencyconverter.entity.Entity;
 import jaya.currencyconverter.entity.User;
 
 public class DataStorageModule extends AbstractModule {
