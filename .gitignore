@@ -17,6 +17,8 @@ settings.json
 #classes
 *.class
 
+#sqlite database
+*.db
 target/
 
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
