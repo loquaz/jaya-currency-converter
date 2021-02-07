@@ -7,6 +7,9 @@ import javax.inject.Singleton;
 
 import com.google.inject.Inject;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import io.javalin.Javalin;
 import jaya.currencyconverter.config.Router;
 
@@ -14,6 +17,8 @@ import jaya.currencyconverter.config.Router;
 public class WebEntryPoint {
  
     private Javalin app;
+
+    private Logger logger = LoggerFactory.getLogger(WebEntryPoint.class);
     
     @Inject(optional = true)    
     private Set<Router> routes = Collections.emptySet();
@@ -25,6 +30,8 @@ public class WebEntryPoint {
 
     private void bindRoutes(){
         routes.forEach(route ->{
+
+            logger.info("Registering routes for: " + route.getController().getClass());
             route.route();
         });
     }
