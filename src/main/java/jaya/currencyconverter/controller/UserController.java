@@ -35,12 +35,12 @@ public class UserController {
             User user = ctx.bodyAsClass(User.class);
             this.service.saveUser(user);
             ctx.status(201);
-            ctx.json( new UserDTO( user ) );
+            ctx.json( new HttpResponseDTO(201, "new user created", false, new UserDTO( user ) ) );
         }
         catch (Exception e) {
             this.userControllerLogger.error(e.getMessage());
             ctx.status(400);
-            ctx.json(new HttpResponseDTO(400, e.getMessage(),true));
+            ctx.json(new HttpResponseDTO(400, e.getMessage(),true, null));
         }
     }
     
