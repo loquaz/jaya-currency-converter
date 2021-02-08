@@ -132,5 +132,9 @@ public class CurrencyConversionService {
                            .map(TransactionDTO::new)
                            .collect(Collectors.toList());         
     }
+
+    public User getUserById(int userID) throws SQLException {
+        return this.userRepository.findUserById(userID);
+    }
     
 }
