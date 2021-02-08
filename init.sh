@@ -1,6 +1,5 @@
 #!/bin/bash
 
-git clone git@github.com:loquaz/jaya-currency-converter.git
 cd jaya-currency-converter
 git checkout docker
 mvn clean package assembly:single
