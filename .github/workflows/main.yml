@@ -11,11 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: List files
-        run: ls -la
-
       - name: Build
-        run: mvn clean package
+        run: mvn clean package assembly:single
 
       - uses: akhileshns/heroku-deploy@v3.10.9 # This is the action
         with:
@@ -26,4 +23,4 @@ jobs:
           docker_build_args: |
             JAR_FILE
         env:
-          JAR_FILE: jaya-challenge.jar
+          JAR_FILE: jaya-cc-1.0-jar-with-dependencies.jar
