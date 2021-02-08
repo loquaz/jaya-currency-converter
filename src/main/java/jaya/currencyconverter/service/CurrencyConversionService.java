@@ -44,7 +44,8 @@ public class CurrencyConversionService {
             String currencyFrom         = transaction.getCurrencyFrom();
             String currencyTo           = transaction.getCurrencyTo();
             BigDecimal amount           = transaction.getAmount();
-            int userID                  = transaction.getUserID();    
+            int userID                  = transaction.getUserID();
+            String errorMsg;    
 
             if(currencyFrom == null || currencyFrom.isEmpty()){
                 serviceLogger.error("currencyFrom can't be empty");
@@ -67,9 +68,22 @@ public class CurrencyConversionService {
             }
 
             CurrencyRatesDTO rates = this.httpClientService.getRates( currencyFrom, null, null );
+
+            if(rates == null){
+                errorMsg = "error querying rates for [ " + currencyFrom + " ] ";     
+                serviceLogger.error( errorMsg );
+                throw new Exception( errorMsg ); 
+            }
+
             User user = this.userRepository.findUserById( userID );
             
             BigDecimal rate = rates.getRates().get( currencyTo );
+
+            if(rate == null){
+                errorMsg = "currency not found [ " + currencyTo + " ] ";     
+                serviceLogger.error( errorMsg );
+                throw new Exception( errorMsg ); 
+            }
             
             BigDecimal valueConverted = convert( rate, amount );            
             
@@ -93,7 +107,7 @@ public class CurrencyConversionService {
             serviceLogger.error( "database error" );
             serviceLogger.error( msg );
             throw new Exception( msg );
-            
+
 		}catch(Exception e){
 
             String msg = e.getCause() != null ? e.getCause().getMessage()
