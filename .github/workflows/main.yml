@@ -23,3 +23,7 @@ jobs:
           heroku_app_name: jaya-currency-conversion
           heroku_email: sereno.desenvolvimento@gmail.com
           usedocker: true
+          docker_build_args: |
+            JAR_FILE
+        env:
+          JAR_FILE: jaya-challenge.jar
