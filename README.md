@@ -50,7 +50,7 @@ The project has the following endpoints
 - POST https://jaya-currency-conversion.herokuapp.com/api/convert
 - GET https://jaya-currency-conversion.herokuapp.com/api/transactions-by-user
 
-\*\*
+**/api/signup**
 The signup endpoint should be used to register an new user.
 
 - Path: /api/signup
@@ -72,6 +72,7 @@ When something is missing (username or password), the output will be like this:
 
 ![](images/signup-error.png)
 
+**/api/convert**
 The convert endpoint do the conversion between two provided currencies.
 
 - Path: /api/convert
@@ -98,3 +99,13 @@ Request:
 Response:
 
 ![](images/succeful-brl-to-usd-conversion-res.png)
+
+Bad Resquest (wrong userID)
+
+Request:
+
+![](images/convert-with-wrong-userid.png)
+
+Response:
+
+![](images/convert-wrong-user-id-res.png)
