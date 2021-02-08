@@ -3,7 +3,7 @@
 ## GOAL
 
 This project aims is to expose an API that does currency conversion.
-To do this, we use the Exchange rates API built by the European Central Bank and hosted at https://api.exchange rates api.io.
+To do this, we use the Exchange rates API built by the European Central Bank and hosted at https://api.exchangeratesapi.io.
 
 ## HOW TO USE
 
