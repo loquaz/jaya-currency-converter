@@ -161,7 +161,7 @@
         
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
-          <version>3.0.2</version>
+          <version>3.0.2</version>          
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
@@ -192,7 +192,38 @@
             </includes>
           </configuration>
         </plugin>
-        
+
+
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib/</classpathPrefix>
+							<mainClass>jaya.currencyconverter.App</mainClass>
+						</manifest>
+						<manifestEntries>
+							<Class-Path>.</Class-Path>
+						</manifestEntries>
+					</archive>
+ 
+					<finalName>jaya/jaya</finalName>
+				</configuration>
+			</plugin>
+
+
+
+
+
+
+
+
+
+
+         
       </plugins>
     </pluginManagement>
   </build>
