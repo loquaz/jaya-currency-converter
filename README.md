@@ -20,7 +20,7 @@ The signup endpoint should be used to register an new user.
   - password (string, required)
 
 Below there is an request example
-[images/signup-json.png]
+![](images/signup-json.png)
 
 A succeful call will present the folloing output
 [images/signup-success.png]
