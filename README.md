@@ -13,9 +13,9 @@ The project has the following endpoints
 
 The signup endpoint should be used to register an new user.
 
-- Endpoint: /api/signup
+- Path: /api/signup
 - HTTP Method: POST
-- Accepts: json
+- Accepts: application/json
 - Parameters:
   - username (string, required)
   - password (string, required)
