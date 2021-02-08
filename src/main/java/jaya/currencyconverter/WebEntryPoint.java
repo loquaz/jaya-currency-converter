@@ -7,9 +7,6 @@ import javax.inject.Singleton;
 
 import com.google.inject.Inject;
 
-import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.ServerConnector;
-import org.eclipse.jetty.util.PathWatcher.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,16 +38,7 @@ public class WebEntryPoint {
     
     public void boot(){
         bindRoutes();
-
-        Server server = new Server();
-        ServerConnector connector = new ServerConnector(server);
-        connector.setHost("0.0.0.0");
-        connector.setPort(5000);
-
-        this.app.create(conf -> {
-            conf.server(()->server);
-        })
-        .start();
+        this.app.start("0.0.0.0",5000);
     }
 
 }
