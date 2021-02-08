@@ -22,10 +22,21 @@ To run this project the following environment is required:
 - Git
 
 **Build Instructions**
-In order to build and run the application, clone this repo and execute the these commands:
+
+In order to build and run the application, clone this repo, enter the directory and build the jar artifact using doing the following:
 
 ```
+git clone git@github.com:loquaz/jaya-currency-converter.git
+cd jaya-currency-converter
 mvn clean package assembly:single
+```
+
+This will produce the _target/jaya-cc-1.0-jar-with-dependencies.jar_ file.
+
+To run the application in stand alone mode just run
+
+```
+java -jar target/jaya-cc-1.0-jar-with-dependencies.jar
 ```
 
 The signup endpoint should be used to register an new user.
