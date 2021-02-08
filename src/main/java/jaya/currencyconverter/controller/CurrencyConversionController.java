@@ -11,12 +11,14 @@ import io.javalin.http.Context;
 import jaya.currencyconverter.config.module.CurrencyConversionAnnotations.CurrencyConversionControllerLogger;
 import jaya.currencyconverter.dto.HttpResponseDTO;
 import jaya.currencyconverter.dto.TransactionDTO;
+import jaya.currencyconverter.entity.User;
 import jaya.currencyconverter.service.CurrencyConversionService;
 
 @Singleton
 public class CurrencyConversionController {
     
     private CurrencyConversionService service;
+    private String errorMessage;
 
     @Inject
     @CurrencyConversionControllerLogger
@@ -51,6 +53,14 @@ public class CurrencyConversionController {
  
         try {
             int userID = Integer.parseInt(ctx.queryParam("userID"));
+            User user = this.service.getUserById(userID);
+            
+            if(user == null){
+                errorMessage = "User with id " + userID + " not found";             
+                currencyConversionLogger.error( errorMessage);
+                throw new Exception( errorMessage );
+            }
+
             List<TransactionDTO> transactions = this.service.getAllUserTransactions(userID);
             ctx.status(200);
             ctx.json( new HttpResponseDTO(200, "user transactions", false, transactions) );
