@@ -27,7 +27,12 @@ public class UserController {
     }
 
     /**
-     * Signs Up a new API user
+     * Signs Up a new user
+     * 
+     * This endpoint responds to HTTP POST Methods
+     * at the /api/signup path and receives two parameters:
+     * - username
+     * - password
      */
     public void signup(Context ctx)  {
  
