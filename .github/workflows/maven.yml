@@ -24,3 +24,6 @@ jobs:
 
       - name: Building Docker Image
         run: docker build -t jaya-currency-converter -f Dockerfile .
+
+      - name: List files
+        run: ls -la
