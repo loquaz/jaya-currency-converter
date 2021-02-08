@@ -11,7 +11,6 @@ import io.javalin.http.Context;
 import jaya.currencyconverter.config.module.CurrencyConversionAnnotations.CurrencyConversionControllerLogger;
 import jaya.currencyconverter.dto.HttpResponseDTO;
 import jaya.currencyconverter.dto.TransactionDTO;
-import jaya.currencyconverter.entity.CurrencyConversionTransaction;
 import jaya.currencyconverter.service.CurrencyConversionService;
 
 @Singleton
