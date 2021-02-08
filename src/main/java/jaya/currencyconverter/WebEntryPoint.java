@@ -38,7 +38,9 @@ public class WebEntryPoint {
     
     public void boot(){
         bindRoutes();
-        this.app.start("0.0.0.0",5000);
+        int port = System.getenv("PORT") != null ? Integer.parseInt(System.getenv("PORT")) :
+                                                   5000; 
+        this.app.start("0.0.0.0",port);
     }
 
 }
