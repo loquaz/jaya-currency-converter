@@ -2,7 +2,7 @@
 
 ## GOAL
 
-This project aims is to expose an API that does currency conversion.
+This project aims to expose an API that does currency conversion.
 To do this, we use the Exchange rates API built by the European Central Bank and hosted at https://api.exchangeratesapi.io.
 
 ## HOW TO USE
@@ -17,7 +17,7 @@ To run this project the following environment is required:
 
 ### Build Instructions
 
-In order to build and run the application, clone this repo, enter the directory and build the jar artifact using doing the following:
+In order to build and run the application, clone this repo, enter the directory and build the jar artifact doing the following:
 
 ```
 git clone git@github.com:loquaz/jaya-currency-converter.git
