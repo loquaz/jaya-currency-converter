@@ -51,6 +51,10 @@ Below are some example of succeful and fail requests.
 
 Succeful conversion from 53 BRL to USD
 
+Request:
+
 ![](images/succeful-brl-to-usd-conversion-req.png)
+
+Response:
 
 ![](images/succeful-brl-to-usd-conversion-res.png)
