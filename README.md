@@ -18,3 +18,9 @@ The signup endpoint should be used to register an new user.
 - Parameters:
   - username (string, required)
   - password (string, required)
+
+Below there is an request example
+[images/signup-json.png]
+
+A succeful call will present the folloing output
+[images/signup-success.png]
