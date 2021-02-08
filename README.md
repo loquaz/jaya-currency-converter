@@ -9,12 +9,12 @@ The project has the following endpoints
 - POST https://jaya-currency-conversion.herokuapp.com/api/convert
 - GET https://jaya-currency-conversion.herokuapp.com/api/transactions-by-user
 
-** HOW TO USE **
+**HOW TO USE**
 
 The signup endpoint should be used to register an new user.
-HTTP Method: POST
-Accepts: json
-Parameters:
 
-- username (string, required)
-- password (string, required)
+- HTTP Method: POST
+- Accepts: json
+- Parameters:
+  - username (string, required)
+  - password (string, required)
