@@ -36,11 +36,12 @@ public class WebEntryPoint {
         });
     }
     
-    public void boot(){
+    public Javalin boot(){
         bindRoutes();
         int port = System.getenv("PORT") != null ? Integer.parseInt(System.getenv("PORT")) :
                                                    5000; 
         this.app.start("0.0.0.0",port);
+        return this.app;
     }
 
 }
