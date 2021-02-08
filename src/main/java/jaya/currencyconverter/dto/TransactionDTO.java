@@ -8,6 +8,7 @@ import lombok.Data;
 @Data
 public class TransactionDTO {
     private int userID;
+    private int transactionID;
     private String currencyFrom;
     private BigDecimal amount;
     private String currencyTo;
@@ -19,6 +20,7 @@ public class TransactionDTO {
 
     public TransactionDTO(CurrencyConversionTransaction transaction){
         this.userID         = transaction.getUser().getId();
+        this.transactionID  = transaction.getId();
         this.amount         = transaction.getValueFrom();
         this.currencyFrom   = transaction.getCurrencyFrom();
         this.currencyTo     = transaction.getCurrencyTo();
