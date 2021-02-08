@@ -13,16 +13,21 @@ The project has the following endpoints
 
 The signup endpoint should be used to register an new user.
 
+- Endpoint: /api/signup
 - HTTP Method: POST
 - Accepts: json
 - Parameters:
   - username (string, required)
   - password (string, required)
 
-Below there is an request example
+Below there is a body data request example.
 
 ![](images/signup-json.png)
 
-A succeful call will present the folloing output
+A succeful call to this end point produces the following output:
 
 ![](images/signup-success.png)
+
+When something is missing (username or password), the output will be like this:
+
+![](images/signup-error.png)
