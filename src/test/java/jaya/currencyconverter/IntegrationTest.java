@@ -82,10 +82,16 @@ public class IntegrationTest {
         HttpResponseDTO resDTO  = g.fromJson(userSignupRes.getBody().toString(), HttpResponseDTO.class); 
         User registeredUser     = g.fromJson(resDTO.getData().toString(), User.class);
         
+        /*
+         * Try to do the conversion
+         */
         Unirest.post("http://localhost:5000/api/convert").body(
              buildTransactionJson(registeredUser.getId(), "BRL", "USD", 52)
         ).asJson();
         
+        /*
+         * retrieves the users transactions [must exists just one]
+         */
         HttpResponse userTransactiosRes         = Unirest.get("http://localhost:5000/api/transactions-by-user?userID="+registeredUser.getId()).asJson();
         HttpResponseDTO userTransactionsResDTO  = g.fromJson(userTransactiosRes.getBody().toString(), HttpResponseDTO.class); 
         
