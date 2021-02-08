@@ -15,7 +15,7 @@ jobs:
         run: ls -la
 
       - name: Build
-        run: mvn clean package build
+        run: mvn clean package
 
       - uses: akhileshns/heroku-deploy@v3.10.9 # This is the action
         with:
