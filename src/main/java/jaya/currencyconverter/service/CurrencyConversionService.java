@@ -3,6 +3,8 @@ package jaya.currencyconverter.service;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -122,6 +124,13 @@ public class CurrencyConversionService {
     
     private BigDecimal convert(BigDecimal to, BigDecimal amount){
         return to.multiply(amount);
+    }
+
+    public List<TransactionDTO> getAllUserTransactions(int userID) throws SQLException {
+        List<CurrencyConversionTransaction> transactions = this.repository.findTransactionsByUserId(userID);
+        return transactions.stream()
+                           .map(TransactionDTO::new)
+                           .collect(Collectors.toList());         
     }
     
 }
