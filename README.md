@@ -5,12 +5,6 @@
 This project aims is to expose an API that does the currency conversion.
 To do this, we use the Exchange rates API built by the European Central Bank and hosted at https://api.exchange rates api.io.
 
-The project has the following endpoints
-
-- POST https://jaya-currency-conversion.herokuapp.com/api/signup
-- POST https://jaya-currency-conversion.herokuapp.com/api/convert
-- GET https://jaya-currency-conversion.herokuapp.com/api/transactions-by-user
-
 ## HOW TO USE
 
 ### Required Software
@@ -49,6 +43,12 @@ sudo chmod u+x init.sh
 ## API Usage
 
 ### Endpoints
+
+The project has the following endpoints
+
+- POST https://jaya-currency-conversion.herokuapp.com/api/signup
+- POST https://jaya-currency-conversion.herokuapp.com/api/convert
+- GET https://jaya-currency-conversion.herokuapp.com/api/transactions-by-user
 
 \*\*
 The signup endpoint should be used to register an new user.
