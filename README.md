@@ -1,9 +1,9 @@
 # Jaya-cc [Currency Conversion]
 
-**GOAL**
+## GOAL
 
-This project aims is to exposes an API that does the conversion between two different currencies.
-To do this, we use the Exchange rates API built by the European Central Bank and hosted at https://api.exchangeratesapi.io.
+This project aims is to expose an API that does the currency conversion.
+To do this, we use the Exchange rates API built by the European Central Bank and hosted at https://api.exchange rates api.io.
 
 The project has the following endpoints
 
@@ -11,9 +11,9 @@ The project has the following endpoints
 - POST https://jaya-currency-conversion.herokuapp.com/api/convert
 - GET https://jaya-currency-conversion.herokuapp.com/api/transactions-by-user
 
-**HOW TO USE**
+## HOW TO USE
 
-**Required Software**
+### Required Software
 
 To run this project the following environment is required:
 
@@ -21,7 +21,7 @@ To run this project the following environment is required:
 - Maven
 - Git
 
-**Build Instructions**
+### Build Instructions
 
 In order to build and run the application, clone this repo, enter the directory and build the jar artifact using doing the following:
 
@@ -39,6 +39,18 @@ To run the application in stand alone mode just run
 java -jar target/jaya-cc-1.0-jar-with-dependencies.jar
 ```
 
+OR do the short path if you are using a \*unix like OS: clone the repo, change the _init.sh_ file mode to be executable and run the file.
+
+```
+sudo chmod u+x init.sh
+./init.sh
+```
+
+## API Usage
+
+### Endpoints
+
+\*\*
 The signup endpoint should be used to register an new user.
 
 - Path: /api/signup
