@@ -5,6 +5,16 @@ To do this, we use the Exchange rates API built by the European Central Bank and
 
 The project has the following endpoints
 
-- POST https://jaya-currency-conversion.herokuapp.com
+- POST https://jaya-currency-conversion.herokuapp.com/api/signup
 - POST https://jaya-currency-conversion.herokuapp.com/api/convert
-- GET https://jaya-currency-conversion.herokuapp.com/api/transactions-by-user?userID=<USER ID>
+- GET https://jaya-currency-conversion.herokuapp.com/api/transactions-by-user
+
+** HOW TO USE **
+
+The signup endpoint should be used to register an new user.
+HTTP Method: POST
+Accepts: json
+Parameters:
+
+- username (string, required)
+- password (string, required)
