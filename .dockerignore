@@ -3,6 +3,10 @@ db/
 .vscode/
 .github/
 .gitignore
+.classpath
+.factorypath
+.git
+.settings
 lombok.config
 pom.xml
 README.md

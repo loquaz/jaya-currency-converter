@@ -1,6 +1,6 @@
-FROM adoptopenjdk/openjdk11
+FROM openjdk:8-jre-alpine
 
-EXPOSE 7000
+EXPOSE 5000
 ENTRYPOINT ["/usr/bin/java", "-jar", "/usr/share/jaya/currency-converter.jar"]
 
 ARG JAR_FILE
