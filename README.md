@@ -31,3 +31,26 @@ A succeful call to this end point produces the following output:
 When something is missing (username or password), the output will be like this:
 
 ![](images/signup-error.png)
+
+The convert endpoint do the conversion between two provided currencies.
+
+- Path: /api/convert
+- HTTP Method: POST
+- Accepts: application/json
+- Parameters:
+  - userID (int, required)
+  - currencyFrom (string, required)
+  - amount (int, required)
+  - currencyTo (string, required)
+
+To make a conversion the client must send the _userID_, the original currency providing the
+_currencyFrom_ field, the _amount_ to be converted and the final currency provided
+in the _currencyTo_ field. All the fields are required.
+
+Below are some example of succeful and fail requests.
+
+Succeful conversion from 53 BRL to USD
+
+![](images/succeful-brl-to-usd-conversion-req.png)
+
+![](images/succeful-brl-to-usd-conversion-res.png)
