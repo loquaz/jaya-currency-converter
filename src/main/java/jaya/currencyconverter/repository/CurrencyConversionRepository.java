@@ -1,6 +1,7 @@
 package jaya.currencyconverter.repository;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -24,6 +25,10 @@ public class CurrencyConversionRepository {
 
 	public CurrencyConversionTransaction saveTransaction(CurrencyConversionTransaction transaction) throws SQLException {
 		return this.dao.createIfNotExists(transaction);
+	}
+
+	public List<CurrencyConversionTransaction> findTransactionsByUserId(int userID) throws SQLException {
+		return this.dao.queryForEq("user_id", userID);
 	}
     
 }
