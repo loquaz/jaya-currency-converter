@@ -145,5 +145,37 @@ public class ConversionUnitTest {
         verify(ctx).status(400);
 
     }
+
+    @Test
+    @Order(5)
+    public void POST_do_not_create_a_transaction_from_a_wrong_base_currency(){
+
+        TransactionDTO transaction = new TransactionDTO();
+        transaction.setUserID( user.getId() );
+        transaction.setCurrencyFrom( "IKÇ" ); // invalid currency 
+        transaction.setCurrencyTo("BRL");
+        transaction.setAmount( new BigDecimal(60) ); 
+        
+        when(ctx.bodyAsClass(TransactionDTO.class)).thenReturn( transaction );
+        controller.doConversion(ctx);
+        verify(ctx).status(400);
+
+    }
+
+    @Test
+    @Order(6)
+    public void POST_do_not_create_a_transaction_from_a_wrong_rate_currency(){
+
+        TransactionDTO transaction = new TransactionDTO();
+        transaction.setUserID( user.getId() );
+        transaction.setCurrencyFrom( "BRL" );  
+        transaction.setCurrencyTo("JKX"); // invalid currency
+        transaction.setAmount( new BigDecimal(60) ); 
+        
+        when(ctx.bodyAsClass(TransactionDTO.class)).thenReturn( transaction );
+        controller.doConversion(ctx);
+        verify(ctx).status(400);
+
+    }
     
 }
