@@ -27,7 +27,7 @@ mvn clean package assembly:single
 
 This will produce the _target/jaya-cc-1.0-jar-with-dependencies.jar_ file.
 
-To run the application in stand alone mode just run
+To run the application in standalone mode just run
 
 ```
 java -jar target/jaya-cc-1.0-jar-with-dependencies.jar
