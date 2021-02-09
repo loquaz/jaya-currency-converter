@@ -99,7 +99,7 @@ public class CurrencyConversionService {
             String msg = e.getCause() != null ? e.getCause().getMessage()
                                               : e.getMessage(); 
                                               
-            Util.logAndThrowException(serviceLogger, "transaction error" + msg );
+            Util.logAndThrowException(serviceLogger, "transaction error " + msg );
             
         }
 
