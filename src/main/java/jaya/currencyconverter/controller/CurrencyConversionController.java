@@ -8,6 +8,13 @@ import javax.inject.Singleton;
 import org.slf4j.Logger;
 
 import io.javalin.http.Context;
+import io.javalin.plugin.openapi.annotations.HttpMethod;
+import io.javalin.plugin.openapi.annotations.OpenApi;
+import io.javalin.plugin.openapi.annotations.OpenApiContent;
+import io.javalin.plugin.openapi.annotations.OpenApiParam;
+import io.javalin.plugin.openapi.annotations.OpenApiRequestBody;
+import io.javalin.plugin.openapi.annotations.OpenApiResponse;
+
 import jaya.currencyconverter.config.module.CurrencyConversionAnnotations.CurrencyConversionControllerLogger;
 import jaya.currencyconverter.dto.HttpResponseDTO;
 import jaya.currencyconverter.dto.TransactionDTO;
@@ -32,6 +39,21 @@ public class CurrencyConversionController {
     /**
      * Do the currency convertion
      */
+    @OpenApi(
+        path = "/api/currency/convert",
+        method = HttpMethod.POST,
+        summary = "do a currency conversion",
+        pathParams = {
+            @OpenApiParam(name = "currencyFrom", type = String.class, description = "original currency"),
+            @OpenApiParam(name = "currencyTo", type = String.class, description = "target currency"),
+            @OpenApiParam(name = "amount", type = Integer.class, description = "amount to be converted"),
+            @OpenApiParam(name = "userID", type = Integer.class, description = "user ID")
+        },
+        requestBody = @OpenApiRequestBody( content = @OpenApiContent( from = TransactionDTO.class ) ),
+        responses = {
+            @OpenApiResponse(status = "200", content = @OpenApiContent( from = HttpResponseDTO.class ))
+        }
+    )
     public void doConversion(Context ctx)  {
  
         try {
@@ -49,6 +71,18 @@ public class CurrencyConversionController {
      /**
      * List all user transaction
      */
+    @OpenApi(
+        path = "/api/currency/transactions-by-user",
+        method = HttpMethod.GET,
+        summary = "list all user transactions",
+        pathParams = {
+            @OpenApiParam(name = "userID", type = Integer.class, description = "user ID")
+        },
+        requestBody = @OpenApiRequestBody( content = @OpenApiContent( from = TransactionDTO.class ) ),
+        responses = {
+            @OpenApiResponse(status = "200", content = @OpenApiContent( from = HttpResponseDTO.class ))
+        }
+    )
     public void listTransactionByUser(Context ctx)  {
  
         try {
