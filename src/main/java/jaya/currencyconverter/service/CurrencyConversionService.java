@@ -18,6 +18,7 @@ import jaya.currencyconverter.entity.CurrencyConversionTransaction;
 import jaya.currencyconverter.entity.User;
 import jaya.currencyconverter.repository.CurrencyConversionRepository;
 import jaya.currencyconverter.repository.UserRepository;
+import jaya.currencyconverter.util.Util;
 
 @Singleton
 public class CurrencyConversionService {
@@ -47,45 +48,30 @@ public class CurrencyConversionService {
             String currencyTo           = transaction.getCurrencyTo();
             BigDecimal amount           = transaction.getAmount();
             int userID                  = transaction.getUserID();
-            String errorMsg;    
+            
+            if(currencyFrom == null || currencyFrom.isEmpty())
+                Util.logAndThrowException(serviceLogger, "currencyFrom can't be empty");
+            
+            if(currencyTo == null || currencyTo.isEmpty())
+                Util.logAndThrowException(serviceLogger, "currencyTo can't be empty");
 
-            if(currencyFrom == null || currencyFrom.isEmpty()){
-                serviceLogger.error("currencyFrom can't be empty");
-                throw new Exception("currencyFrom can't be empty"); 
-            }
+            if(amount == null || ( amount.compareTo(BigDecimal.ZERO) == 0 ) )
+                Util.logAndThrowException(serviceLogger, "amount can't be null or equals to 0");
 
-            if(currencyTo == null || currencyTo.isEmpty()){
-                serviceLogger.error("currencyTo can't be empty");
-                throw new Exception("currencyTo can't be empty"); 
-            }
-
-            if(amount == null || ( amount.compareTo(BigDecimal.ZERO) == 0 ) ){
-                serviceLogger.error("amount can't be null or equals to 0");
-                throw new Exception("amount can't be null or equals to 0"); 
-            }
-
-            if(userID == 0){
-                serviceLogger.error("userID can't be null");
-                throw new Exception("userID can't be null"); 
-            }
+            if(userID == 0)
+                Util.logAndThrowException(serviceLogger, "userID can't be null");
 
             CurrencyRatesDTO rates = this.httpClientService.getRates( currencyFrom, null, null );
 
-            if(rates == null){
-                errorMsg = "error querying rates for [ " + currencyFrom + " ] ";     
-                serviceLogger.error( errorMsg );
-                throw new Exception( errorMsg ); 
-            }
+            if(rates == null)
+                Util.logAndThrowException(serviceLogger, "error querying rates for [ " + currencyFrom + " ] ");
 
             User user = this.userRepository.findUserById( userID );
             
             BigDecimal rate = rates.getRates().get( currencyTo );
 
-            if(rate == null){
-                errorMsg = "currency not found [ " + currencyTo + " ] ";     
-                serviceLogger.error( errorMsg );
-                throw new Exception( errorMsg ); 
-            }
+            if(rate == null)
+                Util.logAndThrowException(serviceLogger, "currency not found [ " + currencyTo + " ] ");
             
             BigDecimal valueConverted = convert( rate, amount );            
             
@@ -104,22 +90,21 @@ public class CurrencyConversionService {
 
 		} catch (SQLException e) {
 			String msg = e.getCause() != null ? e.getCause().getMessage()
-                                              : e.getMessage();  
-            
-            serviceLogger.error( "database error" );
-            serviceLogger.error( msg );
-            throw new Exception( msg );
+                                              : e.getMessage();
+
+            Util.logAndThrowException(serviceLogger, "database error " + msg );
 
 		}catch(Exception e){
 
             String msg = e.getCause() != null ? e.getCause().getMessage()
-                                              : e.getMessage();  
-            
-            serviceLogger.error( "transaction error" );
-            serviceLogger.error( msg );
-            throw new Exception( msg );
+                                              : e.getMessage(); 
+                                              
+            Util.logAndThrowException(serviceLogger, "transaction error" + msg );
             
         }
+
+        return null;
+        
     }
     
     private BigDecimal convert(BigDecimal to, BigDecimal amount){
