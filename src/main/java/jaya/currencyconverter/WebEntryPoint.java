@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.javalin.Javalin;
+
 import jaya.currencyconverter.config.Router;
 
 @Singleton
@@ -40,8 +41,9 @@ public class WebEntryPoint {
         bindRoutes();
         int port = System.getenv("PORT") != null ? Integer.parseInt(System.getenv("PORT")) :
                                                    5000; 
-        this.app.start("0.0.0.0",port);
-        return this.app;
+        return this.app.start("0.0.0.0",port);
     }
+
+    
 
 }
