@@ -24,10 +24,10 @@ public class CurrencyConversionRouting extends Router<CurrencyConversionControll
 	@Override
 	public void route() {
 		this.app.routes(()->{
-            path("api/convert", () -> {
+            path("api/currency/convert", () -> {
                 post(ctx -> getController().doConversion(ctx));
             });
-            path("api/transactions-by-user", () -> {
+            path("api/currency/transactions-by-user", () -> {
                 get(ctx -> getController().listTransactionByUser(ctx));
             });
             
