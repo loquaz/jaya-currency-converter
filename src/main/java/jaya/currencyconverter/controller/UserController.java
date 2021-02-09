@@ -49,7 +49,7 @@ public class UserController {
             @OpenApiParam(name = "username", type = String.class, description = "username"),
             @OpenApiParam(name = "password", type = String.class, description = "password"),
         },
-        requestBody = @OpenApiRequestBody( content = @OpenApiContent( from = User.class ) ),
+        //requestBody = @OpenApiRequestBody( content = @OpenApiContent( from = User.class ) ),
         responses = {
             @OpenApiResponse(status = "200", content = @OpenApiContent( from = HttpResponseDTO.class ))
         }
