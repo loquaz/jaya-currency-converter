@@ -75,7 +75,7 @@ public class CurrencyConversionController {
         path = "/api/currency/transactions-by-user",
         method = HttpMethod.GET,
         summary = "list all user transactions",
-        pathParams = {
+        queryParams = {
             @OpenApiParam(name = "userID", type = Integer.class, description = "user ID")
         },
         requestBody = @OpenApiRequestBody( content = @OpenApiContent( from = TransactionDTO.class ) ),
