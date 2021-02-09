@@ -12,8 +12,9 @@ To do this, we use the Exchange rates API built by the European Central Bank and
 To run this project the following environment is required:
 
 - Java 1.8 or above
-- Maven
+- Maven 3.x
 - Git
+- Docker (optional)
 
 ### Build Instructions
 
@@ -51,7 +52,7 @@ The project has the following endpoints
 - GET https://jaya-currency-conversion.herokuapp.com/api/transactions-by-user
 
 **/api/signup**
-The signup endpoint should be used to register an new user.
+The signup endpoint should be used to register a new user.
 
 - Path: /api/signup
 - HTTP Method: POST
@@ -64,7 +65,7 @@ Below there is a body data request example.
 
 ![](images/signup-json.png)
 
-A succeful call produces the following output:
+A successful call produces the following output:
 
 ![](images/signup-success.png)
 
@@ -88,17 +89,17 @@ To make a conversion the client must send the _userID_, the original currency pr
 _currencyFrom_ field, the _amount_ to be converted and the final currency provided
 in the _currencyTo_ field. All these fields are required.
 
-Below are some example of succeful and fail requests.
+Below are some example of successful and fail requests.
 
-Succeful conversion from 53 BRL to USD
+successful conversion from 53 BRL to USD
 
 Request:
 
-![](images/succeful-brl-to-usd-conversion-req.png)
+![](images/successful-brl-to-usd-conversion-req.png)
 
 Response:
 
-![](images/succeful-brl-to-usd-conversion-res.png)
+![](images/successful-brl-to-usd-conversion-res.png)
 
 Bad Resquest (wrong userID)
 
