@@ -23,7 +23,7 @@ public class UserRouting extends Router<UserController>{
 	@Override
 	public void route() {
 		this.app.routes(()->{
-            path("api/signup", () -> {
+            path("api/user/signup", () -> {
                 post(ctx -> getController().signup(ctx));
             });
         });	
