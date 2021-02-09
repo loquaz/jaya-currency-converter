@@ -6,6 +6,12 @@ import org.jetbrains.annotations.NotNull;
 import io.javalin.Javalin;
 import jaya.currencyconverter.WebEntryPoint;
 
+import io.javalin.plugin.openapi.OpenApiOptions;
+import io.javalin.plugin.openapi.OpenApiPlugin;
+import io.javalin.plugin.openapi.ui.ReDocOptions;
+import io.javalin.plugin.openapi.ui.SwaggerOptions;
+import io.swagger.v3.oas.models.info.Info;
+
 public class ServerModule extends AbstractModule{
  
     private Javalin app;
@@ -17,7 +23,9 @@ public class ServerModule extends AbstractModule{
 
     @NotNull
     public static ServerModule create() {
-        return new ServerModule(Javalin.create());
+        return new ServerModule(Javalin.create( conf -> {
+            conf.registerPlugin( new OpenApiPlugin( getOpenApiOptions() ) );
+        } ));
     }
 
     @NotNull
@@ -36,5 +44,16 @@ public class ServerModule extends AbstractModule{
         install( new UserModule() );
         install( new CurrencyConversionModule() );        
         
+    }
+
+    private static OpenApiOptions getOpenApiOptions(){
+        Info info = new Info()
+        .version("1.0")
+        .description("Jaya Currency Conversion");
+        
+        return new OpenApiOptions(info).path("/swagger-docs")
+        .activateAnnotationScanningFor("jaya.currencyconverter")
+        .swagger( new SwaggerOptions("/swagger-ui") )
+        .reDoc( new ReDocOptions("/redoc") );
     }
 }
